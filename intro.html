@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: linear-gradient(135deg, #2E5A88 0%, #1e3c5a 100%);
+        color: #F0F0F0;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .content {
+        padding: 60px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      
+      .title {
+        font-size: 72px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+        line-height: 1.1;
+      }
+      
+      .subtitle {
+        font-size: 36px;
+        font-weight: 500;
+        color: #FF6B6B;
+        margin-bottom: 40px;
+      }
+      
+      .main-content {
+        display: flex;
+        flex: 1;
+      }
+      
+      .text-content {
+        flex: 1;
+        padding-right: 40px;
+      }
+      
+      .description {
+        font-size: 24px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+      }
+      
+      .highlight {
+        color: #FF6B6B;
+        font-weight: 600;
+      }
+      
+      .image-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .app-image {
+        max-width: 500px;
+        max-height: 400px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="content">
+        <div class="title">PULSE</div>
+        <div class="subtitle">A Revolução das Conexões Reais</div>
+        
+        <div class="main-content">
+          <div class="text-content">
+            <div class="description">
+              Mais que um app, um <span class="highlight">movimento</span> que reconecta pessoas no mundo real.
+            </div>
+            <div class="description">
+              <span class="highlight">"Sua Cidade. Seu Ritmo. Suas Conexões."</span>
+            </div>
+            <div class="description">
+              Transformando a tecnologia em um meio para a vida, não um substituto dela.
+            </div>
+          </div>
+          
+          <div class="image-container">
+            <img src="/home/ubuntu/pulse_presentation_project/images/ZpIEYIZFmlV1.jpg" alt="Interface do Pulse" class="app-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

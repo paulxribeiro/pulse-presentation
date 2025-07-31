@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: linear-gradient(135deg, #2E5A88 0%, #1e3c5a 100%);
+        color: #F0F0F0;
+      }
+      
+      .content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 30px;
+      }
+      
+      .main-content {
+        display: flex;
+        gap: 40px;
+      }
+      
+      .text-column {
+        flex: 1;
+      }
+      
+      .section {
+        margin-bottom: 25px;
+      }
+      
+      .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #FF6B6B;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .section-icon {
+        margin-right: 10px;
+      }
+      
+      .section-content {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+      
+      .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 12px;
+      }
+      
+      .benefit-icon {
+        color: #6BFFD4;
+        margin-right: 10px;
+        margin-top: 3px;
+      }
+      
+      .benefit-text {
+        font-size: 16px;
+      }
+      
+      .pricing-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 15px;
+      }
+      
+      .pricing-table th, .pricing-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .pricing-table th {
+        font-weight: 600;
+        color: #FF6B6B;
+      }
+      
+      .pricing-table tr:last-child td {
+        border-bottom: none;
+      }
+      
+      .visual-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .image-container {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .dashboard-image {
+        width: 500px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      }
+      
+      .example-container {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+        height: 300px;
+      }
+      
+      .example-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #FF6B6B;
+      }
+      
+      .example-content {
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 35px);
+      }
+      
+      .example-before-after {
+        display: flex;
+        flex: 1;
+        gap: 20px;
+      }
+      
+      .example-box {
+        flex: 1;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .example-box-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      
+      .example-box-content {
+        font-size: 15px;
+        line-height: 1.4;
+        flex: 1;
+      }
+      
+      .example-metric {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      
+      .example-number {
+        font-size: 24px;
+        font-weight: 700;
+        margin-right: 5px;
+      }
+      
+      .example-label {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="content">
+        <div class="title">Pulse PRO: A Solução para Negócios</div>
+        
+        <div class="main-content">
+          <div class="text-column">
+            <div class="section">
+              <div class="section-title">
+                <i class="fas fa-star section-icon"></i>
+                Principais Benefícios
+              </div>
+              <div class="section-content">
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle benefit-icon"></i>
+                  <div class="benefit-text">
+                    <strong>Perfil Verificado e Destaque:</strong> Selo "Oficial", prioridade no mapa e banner personalizado.
+                  </div>
+                </div>
+                
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle benefit-icon"></i>
+                  <div class="benefit-text">
+                    <strong>Ferramentas de Venda Avançada:</strong> Venda direta sem taxa extra, sistema de reservas e check-in digital.
+                  </div>
+                </div>
+                
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle benefit-icon"></i>
+                  <div class="benefit-text">
+                    <strong>Analytics Poderoso:</strong> Dados em tempo real sobre público, picos de movimentação e avaliações detalhadas.
+                  </div>
+                </div>
+                
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle benefit-icon"></i>
+                  <div class="benefit-text">
+                    <strong>Gestão de Eventos Recorrentes:</strong> Agenda automática e promoções integradas.
+                  </div>
+                </div>
+                
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle benefit-icon"></i>
+                  <div class="benefit-text">
+                    <strong>Suporte Prioritário:</strong> Atendimento via chat 24/7 e relatórios mensais personalizados.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">
+                <i class="fas fa-tags section-icon"></i>
+                Modelo de Assinatura
+              </div>
+              <div class="section-content">
+                <table class="pricing-table">
+                  <thead>
+                    <tr>
+                      <th>Plano</th>
+                      <th>Preço (R$/mês)</th>
+                      <th>Para quem?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Basic</td>
+                      <td>99</td>
+                      <td>Bares, pequenos eventos</td>
+                    </tr>
+                    <tr>
+                      <td>Pro</td>
+                      <td>299</td>
+                      <td>Casas de show médias</td>
+                    </tr>
+                    <tr>
+                      <td>Enterprise</td>
+                      <td>Sob consulta</td>
+                      <td>Grandes festivais, estádios</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <div class="visual-column">
+            <div class="image-container">
+              <img src="/home/ubuntu/pulse_presentation_project/images/Jntnz2kdVTJf.png" alt="Dashboard Analytics" class="dashboard-image">
+            </div>
+            
+            <div class="example-container">
+              <div class="example-title">Exemplo Prático: "Casa da Música"</div>
+              <div class="example-content">
+                <div class="example-before-after">
+                  <div class="example-box">
+                    <div class="example-box-title">Antes do Pulse Pro</div>
+                    <div class="example-box-content">
+                      Vendas via WhatsApp, processo manual, alcance limitado, sem dados sobre o público.
+                    </div>
+                    <div class="example-metric">
+                      <div class="example-number">50</div>
+                      <div class="example-label">ingressos/show</div>
+                    </div>
+                  </div>
+                  
+                  <div class="example-box">
+                    <div class="example-box-title">Com Pulse Pro</div>
+                    <div class="example-box-content">
+                      Destaque no mapa, reservas integradas, dados valiosos sobre o público (70% mulheres 25-34 anos).
+                    </div>
+                    <div class="example-metric">
+                      <div class="example-number">150</div>
+                      <div class="example-label">ingressos/show</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

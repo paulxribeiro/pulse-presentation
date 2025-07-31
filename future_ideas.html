@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: linear-gradient(135deg, #2E5A88 0%, #1e3c5a 100%);
+        color: #F0F0F0;
+      }
+      
+      .content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 30px;
+      }
+      
+      .main-content {
+        display: flex;
+        gap: 40px;
+      }
+      
+      .text-column {
+        flex: 1;
+      }
+      
+      .section {
+        margin-bottom: 25px;
+      }
+      
+      .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #FF6B6B;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .section-icon {
+        margin-right: 10px;
+      }
+      
+      .section-content {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+      
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+      
+      .feature-icon {
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255, 107, 107, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+      
+      .feature-content {
+        flex: 1;
+      }
+      
+      .feature-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      
+      .feature-description {
+        font-size: 16px;
+        line-height: 1.4;
+      }
+      
+      .roadmap {
+        margin-top: 20px;
+      }
+      
+      .roadmap-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      
+      .roadmap-year {
+        width: 70px;
+        height: 36px;
+        background-color: #FF6B6B;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+      
+      .roadmap-text {
+        font-size: 16px;
+        flex: 1;
+      }
+      
+      .visual-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .image-container {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .gamification-image {
+        width: 500px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      }
+      
+      .timeline-container {
+        height: 300px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+      }
+      
+      .timeline-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #FF6B6B;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="content">
+        <div class="title">Novas Ideias e Evolução Futura</div>
+        
+        <div class="main-content">
+          <div class="text-column">
+            <div class="section">
+              <div class="section-title">
+                <i class="fas fa-lightbulb section-icon"></i>
+                Funcionalidades Futuras
+              </div>
+              <div class="section-content">
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                  <div class="feature-content">
+                    <div class="feature-title">Pulse Points</div>
+                    <div class="feature-description">
+                      Sistema de recompensas por comparecimento a eventos, com pontos trocáveis por descontos, acessos VIP ou doações para causas sociais.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="feature-content">
+                    <div class="feature-title">Match Social</div>
+                    <div class="feature-description">
+                      Algoritmo inteligente para sugerir conexões entre usuários com base em interesses comuns e proximidade geográfica.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="feature-content">
+                    <div class="feature-title">Relatórios Pessoais</div>
+                    <div class="feature-description">
+                      Histórico de eventos e conexões feitas, incluindo um "mapa de memórias" com os locais visitados.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">
+                <i class="fas fa-road section-icon"></i>
+                Roadmap de Evolução
+              </div>
+              <div class="section-content">
+                <div class="roadmap">
+                  <div class="roadmap-item">
+                    <div class="roadmap-year">2025</div>
+                    <div class="roadmap-text">
+                      Integração com esportes e transmissões ao vivo de eventos locais
+                    </div>
+                  </div>
+                  
+                  <div class="roadmap-item">
+                    <div class="roadmap-year">2026</div>
+                    <div class="roadmap-text">
+                      Pulse Pro* com analytics avançados para negócios e promotores
+                    </div>
+                  </div>
+                  
+                  <div class="roadmap-item">
+                    <div class="roadmap-year">2027</div>
+                    <div class="roadmap-text">
+                      Realidade aumentada para enriquecer a experiência em eventos
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="visual-column">
+            <div class="image-container">
+              <img src="/home/ubuntu/pulse_presentation_project/images/FNzaJNykCfkd.jpg" alt="Elementos de Gamificação" class="gamification-image">
+            </div>
+            
+            <div class="timeline-container">
+              <div class="timeline-title">Evolução do Engajamento do Usuário</div>
+              <canvas id="engagementChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Dados representativos da evolução do engajamento
+      const ctx = document.getElementById('engagementChart').getContext('2d');
+      const engagementChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Lançamento', '+ Pulse Points', '+ Match Social', '+ Relatórios', '+ RA'],
+          datasets: [
+            {
+              label: 'Tempo no App (min/dia)',
+              data: [15, 22, 28, 32, 40],
+              borderColor: '#FF6B6B',
+              backgroundColor: 'rgba(255, 107, 107, 0.2)',
+              tension: 0.3,
+              fill: true
+            },
+            {
+              label: 'Eventos por Usuário (mensal)',
+              data: [2, 3, 4, 5, 7],
+              borderColor: '#6BFFD4',
+              backgroundColor: 'rgba(107, 255, 212, 0.2)',
+              tension: 0.3,
+              fill: true
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#F0F0F0',
+                font: {
+                  family: 'Montserrat'
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: '#F0F0F0'
+              },
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              }
+            },
+            x: {
+              ticks: {
+                color: '#F0F0F0'
+              },
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              }
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+

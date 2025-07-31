@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: linear-gradient(135deg, #2E5A88 0%, #1e3c5a 100%);
+        color: #F0F0F0;
+      }
+      
+      .content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 30px;
+      }
+      
+      .main-content {
+        display: flex;
+        gap: 40px;
+      }
+      
+      .text-column {
+        flex: 1;
+      }
+      
+      .section {
+        margin-bottom: 25px;
+      }
+      
+      .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #FF6B6B;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .section-icon {
+        margin-right: 10px;
+      }
+      
+      .section-content {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+      
+      .revenue-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      
+      .revenue-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 107, 107, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+      
+      .revenue-text {
+        font-size: 16px;
+      }
+      
+      .strategy-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .strategy-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      
+      .strategy-number {
+        width: 25px;
+        height: 25px;
+        background-color: #FF6B6B;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-weight: 600;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+      
+      .strategy-text {
+        font-size: 16px;
+      }
+      
+      .visual-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .image-container {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .event-image {
+        width: 500px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      }
+      
+      .chart-container {
+        height: 300px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+      }
+      
+      .chart-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="content">
+        <div class="title">Modelo de Negócios e Estratégia</div>
+        
+        <div class="main-content">
+          <div class="text-column">
+            <div class="section">
+              <div class="section-title">
+                <i class="fas fa-money-bill-wave section-icon"></i>
+                Fontes de Receita
+              </div>
+              <div class="section-content">
+                <div class="revenue-item">
+                  <div class="revenue-icon">
+                    <i class="fas fa-ticket-alt"></i>
+                  </div>
+                  <div class="revenue-text">
+                    <strong>Taxa sobre Ingressos/Vaquinhas:</strong> 5-10% sobre vendas e arrecadações através da plataforma.
+                  </div>
+                </div>
+                
+                <div class="revenue-item">
+                  <div class="revenue-icon">
+                    <i class="fas fa-crown"></i>
+                  </div>
+                  <div class="revenue-text">
+                    <strong>Pulse Pro:</strong> Versão premium para negócios, com planos a partir de R$99/mês.
+                  </div>
+                </div>
+                
+                <div class="revenue-item">
+                  <div class="revenue-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                  </div>
+                  <div class="revenue-text">
+                    <strong>Doações Voluntárias:</strong> Opção para usuários apoiarem o app sem anúncios.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">
+                <i class="fas fa-rocket section-icon"></i>
+                Estratégia de Lançamento
+              </div>
+              <div class="section-content">
+                <ul class="strategy-list">
+                  <li class="strategy-item">
+                    <div class="strategy-number">1</div>
+                    <div class="strategy-text">Fase Beta em BH e RJ para testar funcionalidades e coletar feedback.</div>
+                  </li>
+                  
+                  <li class="strategy-item">
+                    <div class="strategy-number">2</div>
+                    <div class="strategy-text">Parcerias com 10 coletivos culturais para promover uso e criação de eventos.</div>
+                  </li>
+                  
+                  <li class="strategy-item">
+                    <div class="strategy-number">3</div>
+                    <div class="strategy-text">Influenciadores locais de nicho que ressoam com o público-alvo.</div>
+                  </li>
+                  
+                  <li class="strategy-item">
+                    <div class="strategy-number">4</div>
+                    <div class="strategy-text">Funcionalidade viral "Tá Rolando Aqui" para compartilhamento espontâneo.</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="visual-column">
+            <div class="image-container">
+              <img src="/home/ubuntu/pulse_presentation_project/images/LyBfE2BBnX4R.jpg" alt="Pessoas Curtindo Eventos" class="event-image">
+            </div>
+            
+            <div class="chart-container">
+              <div class="chart-title">Projeção de Receita por Fonte</div>
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Dados representativos da projeção de receita
+      const ctx = document.getElementById('revenueChart').getContext('2d');
+      const revenueChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Taxa sobre Ingressos/Vaquinhas', 'Pulse Pro', 'Doações Voluntárias'],
+          datasets: [
+            {
+              data: [55, 40, 5],
+              backgroundColor: [
+                '#FF6B6B',
+                '#6BFFD4',
+                '#FFFFFF'
+              ],
+              borderColor: '#1e3c5a',
+              borderWidth: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#F0F0F0',
+                font: {
+                  family: 'Montserrat'
+                },
+                padding: 20
+              }
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+

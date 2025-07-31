@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: linear-gradient(135deg, #2E5A88 0%, #1e3c5a 100%);
+        color: #F0F0F0;
+      }
+      
+      .content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 30px;
+      }
+      
+      .main-content {
+        display: flex;
+        gap: 30px;
+      }
+      
+      .feature-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .feature-item {
+        margin-bottom: 25px;
+      }
+      
+      .feature-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #FF6B6B;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .feature-icon {
+        margin-right: 10px;
+      }
+      
+      .feature-description {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+      
+      .image-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .feature-image {
+        max-width: 100%;
+        max-height: 220px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="content">
+        <div class="title">Funcionalidades Principais</div>
+        
+        <div class="main-content">
+          <div class="feature-column">
+            <div class="feature-item">
+              <div class="feature-title">
+                <i class="fas fa-map-marked-alt feature-icon"></i>
+                Visualização Flexível de Eventos
+              </div>
+              <div class="feature-description">
+                Mapa interativo com georreferenciamento, feed em lista por raio de KM ou cidade, e modo "Explorar" para descobertas.
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-title">
+                <i class="fas fa-user-circle feature-icon"></i>
+                Perfis Inteligentes
+              </div>
+              <div class="feature-description">
+                Perfis pessoais com histórico e interesses, e perfis locais para estabelecimentos com agenda e avaliações.
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-title">
+                <i class="fas fa-bell feature-icon"></i>
+                Notificações que Importam
+              </div>
+              <div class="feature-description">
+                Alertas relevantes e contextuais que incentivam a participação em eventos de interesse real.
+              </div>
+            </div>
+            
+            <div class="image-container">
+              <img src="/home/ubuntu/pulse_presentation_project/images/NY1Ylns0KoDA.jpg" alt="Mapa Interativo de Eventos" class="feature-image">
+            </div>
+          </div>
+          
+          <div class="feature-column">
+            <div class="feature-item">
+              <div class="feature-title">
+                <i class="fas fa-calendar-alt feature-icon"></i>
+                Ferramentas de Eventos
+              </div>
+              <div class="feature-description">
+                Criação em 3 cliques, sistema de ingressos e vaquinhas integrado, e sincronização com agenda.
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-title">
+                <i class="fas fa-briefcase feature-icon"></i>
+                Aba "Negócios & Educação"
+              </div>
+              <div class="feature-description">
+                Cursos, palestras, feiras, networking e recrutamento com certificados digitais e salas virtuais.
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-title">
+                <i class="fas fa-trophy feature-icon"></i>
+                Sistema de Gamificação
+              </div>
+              <div class="feature-description">
+                Selos, níveis de "Energia Social", medalhas temáticas e ranking semanal com recompensas.
+              </div>
+            </div>
+            
+            <div class="image-container">
+              <img src="/home/ubuntu/pulse_presentation_project/images/Wi6np848pzab.png" alt="Elementos de Gamificação" class="feature-image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
