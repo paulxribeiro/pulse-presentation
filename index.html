@@ -3,80 +3,1084 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulse - Apresentação Completa</title>
+    <title>Pulse - A Revolução das Conexões Reais</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
         body {
             font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
             background: linear-gradient(135deg, #2E5A88 0%, #1e3c5a 100%);
             color: #F0F0F0;
+            line-height: 1.6;
+        }
+
+        .section-container {
+            width: 100%;
+            min-height: 720px;
+            padding: 50px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
         }
-        .container {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 800px;
-            width: 90%;
-        }
-        h1 {
+
+        .section-title {
             font-size: 48px;
             font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            text-align: center;
         }
-        h2 {
-            font-size: 28px;
-            font-weight: 500;
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: center;
+        }
+
+        .text-column, .visual-column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .text-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-item, .section-content, .benefit-item, .revenue-item, .strategy-item, .movement-item {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .feature-title, .sub-section-title {
+            font-size: 24px;
+            font-weight: 600;
             color: #FF6B6B;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-icon, .section-icon {
+            margin-right: 10px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 30px;
         }
-        .slide-list {
-            list-style: none;
-            padding: 0;
+
+        .app-image, .feature-image, .market-image, .behavior-image, .event-image, .dashboard-image, .events-image, .gamification-image, .conclusion-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .chart-container, .example-container, .flow-container, .timeline-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chart-title, .example-title, .flow-title, .timeline-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #FF6B6B;
+        }
+
+        .highlight-box {
+            background-color: rgba(255, 107, 107, 0.15);
+            border-left: 4px solid #FF6B6B;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
             margin-top: 30px;
         }
-        .slide-list li {
+
+        .highlight-text {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 15px;
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-table th {
+            font-weight: 600;
+            color: #FF6B6B;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .category-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-icon {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 107, 107, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 40px);
+            justify-content: space-between;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+        }
+
+        .flow-number {
+            width: 30px;
+            height: 30px;
+            background-color: #FF6B6B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: 600;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .flow-arrow {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+            color: #FF6B6B;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
-        .slide-list a {
-            display: block;
+
+        .roadmap-year {
+            width: 70px;
+            height: 36px;
             background-color: #FF6B6B;
-            color: #FFFFFF;
-            padding: 15px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 20px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        .slide-list a:hover {
-            background-color: #e05a5a;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Pulse - Apresentação Completa</h1>
-        <h2>Navegue pelos slides da apresentação</h2>
-        <ul class="slide-list">
-            <li><a href="intro.html">1. Introdução ao Pulse: Onde a Vida Acontece</a></li>
-            <li><a href="features.html">2. Funcionalidades Principais</a></li>
-            <li><a href="market_analysis.html">3. Análise de Mercado e Tendências</a></li>
-            <li><a href="user_behavior.html">4. Comportamento do Usuário</a></li>
-            <li><a href="business_model.html">5. Modelo de Negócios e Estratégia</a></li>
-            <li><a href="pulse_pro.html">6. Pulse PRO: A Solução para Negócios</a></li>
-            <li><a href="business_education.html">7. Aba "Negócios & Educação"</a></li>
-            <li><a href="future_ideas.html">8. Novas Ideias e Evolução Futura</a></li>
-            <li><a href="conclusion.html">9. Conclusão: O Movimento Pulse</a></li>
-        </ul>
+
+    <!-- Slide 1: Introdução ao Pulse -->
+    <div class="section-container">
+        <h1 class="section-title">PULSE</h1>
+        <h2 class="section-title" style="font-size: 36px; color: #FF6B6B;">A Revolução das Conexões Reais</h2>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p class="feature-item">
+                    Mais que um app, um <span class="highlight" style="color: #FF6B6B; font-weight: 600;">movimento</span> que reconecta pessoas no mundo real.
+                </p>
+                <p class="feature-item">
+                    <span class="highlight" style="color: #FF6B6B; font-weight: 600;">"Sua Cidade. Seu Ritmo. Suas Conexões."</span>
+                </p>
+                <p class="feature-item">
+                    Transformando a tecnologia em um meio para a vida, não um substituto dela.
+                </p>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/ZpIEYIZFmlV1.jpg" alt="Interface do Pulse" class="app-image">
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Slide 2: Funcionalidades Principais -->
+    <div class="section-container">
+        <h1 class="section-title">Funcionalidades Principais</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-map-marked-alt feature-icon"></i>
+                        Visualização Flexível de Eventos
+                    </div>
+                    <p class="feature-description">
+                        Mapa interativo com georreferenciamento, feed em lista por raio de KM ou cidade, e modo "Explorar" para descobertas.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-user-circle feature-icon"></i>
+                        Perfis Inteligentes
+                    </div>
+                    <p class="feature-description">
+                        Perfis pessoais com histórico e interesses, e perfis locais para estabelecimentos com agenda e avaliações.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-bell feature-icon"></i>
+                        Notificações que Importam
+                    </div>
+                    <p class="feature-description">
+                        Alertas relevantes e contextuais que incentivam a participação em eventos de interesse real.
+                    </p>
+                </div>
+                <div class="image-container">
+                    <img src="./images/NY1Ylns0KoDA.jpg" alt="Mapa Interativo de Eventos" class="feature-image">
+                </div>
+            </div>
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-calendar-alt feature-icon"></i>
+                        Ferramentas de Eventos
+                    </div>
+                    <p class="feature-description">
+                        Criação em 3 cliques, sistema de ingressos e vaquinhas integrado, e sincronização com agenda.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-briefcase feature-icon"></i>
+                        Aba "Negócios & Educação"
+                    </div>
+                    <p class="feature-description">
+                        Cursos, palestras, feiras, networking e recrutamento com certificados digitais e salas virtuais.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-trophy feature-icon"></i>
+                        Sistema de Gamificação
+                    </div>
+                    <p class="feature-description">
+                        Selos, níveis de "Energia Social", medalhas temáticas e ranking semanal com recompensas.
+                    </p>
+                </div>
+                <div class="image-container">
+                    <img src="./images/Wi6np848pzab.png" alt="Elementos de Gamificação" class="feature-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Análise de Mercado e Tendências -->
+    <div class="section-container">
+        <h1 class="section-title">Análise de Mercado e Tendências</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-chart-line feature-icon"></i>
+                        Cenário Atual
+                    </div>
+                    <p class="feature-description">
+                        O mercado digital está saturado com redes sociais que promovem interações superficiais, enquanto cresce a demanda por conexões autênticas e experiências presenciais.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-users feature-icon"></i>
+                        Crescimento Pós-Pandemia
+                    </div>
+                    <p class="feature-description">
+                        O período pós-pandemia acelerou o desejo por experiências presenciais, com aumento significativo na participação em eventos locais e atividades comunitárias.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-thumbs-down feature-icon"></i>
+                        Insatisfação Digital
+                    </div>
+                    <p class="feature-description">
+                        Estudos mostram crescente burnout digital e desejo de desconexão, especialmente entre jovens e adultos que buscam equilíbrio entre vida online e offline.
+                    </p>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/mj7wA8y78sbi.jpg" alt="Burnout Digital" class="market-image">
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Tendência de Busca por Experiências Presenciais vs. Digitais</div>
+                    <canvas id="marketTrendChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Comportamento do Usuário -->
+    <div class="section-container">
+        <h1 class="section-title">Comportamento do Usuário</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-handshake feature-icon"></i>
+                        Desejo por Interações Significativas
+                    </div>
+                    <p class="feature-description">
+                        Usuários, especialmente as novas gerações, buscam ativamente eventos locais e personalizados que permitam construir relacionamentos genuínos e compartilhar momentos memoráveis.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-ban feature-icon"></i>
+                        Rejeição aos Algoritmos Invasivos
+                    </div>
+                    <p class="feature-description">
+                        Há uma crescente demanda por plataformas que facilitem conexões sem depender de algoritmos manipulativos que controlam o que vemos e com quem interagimos.
+                    </p>
+                </div>
+                <div class="highlight-box">
+                    <p class="highlight-text">
+                        "O Pulse atende à demanda por reconexão humana autêntica, oferecendo uma alternativa saudável ao ciclo vicioso das redes sociais tradicionais."
+                    </p>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/iSaqgtYt8hEB.jpg" alt="Sobrecarga de Mídia Social" class="behavior-image">
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Tempo Diário em Redes Sociais vs. Satisfação Reportada</div>
+                    <canvas id="userBehaviorChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Modelo de Negócios e Estratégia -->
+    <div class="section-container">
+        <h1 class="section-title">Modelo de Negócios e Estratégia</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-money-bill-wave feature-icon"></i>
+                        Fontes de Receita
+                    </div>
+                    <div class="section-content">
+                        <div class="revenue-item">
+                            <div class="revenue-icon" style="background-color: rgba(255, 107, 107, 0.2); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <p class="revenue-text">
+                                <strong>Taxa sobre Ingressos/Vaquinhas:</strong> 5-10% sobre vendas e arrecadações através da plataforma.
+                            </p>
+                        </div>
+                        <div class="revenue-item">
+                            <div class="revenue-icon" style="background-color: rgba(255, 107, 107, 0.2); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <p class="revenue-text">
+                                <strong>Pulse Pro:</strong> Versão premium para negócios, com planos a partir de R$99/mês.
+                            </p>
+                        </div>
+                        <div class="revenue-item">
+                            <div class="revenue-icon" style="background-color: rgba(255, 107, 107, 0.2); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <p class="revenue-text">
+                                <strong>Doações Voluntárias:</strong> Opção para usuários apoiarem o app sem anúncios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-rocket feature-icon"></i>
+                        Estratégia de Lançamento
+                    </div>
+                    <ul class="section-content" style="list-style-type: none; padding: 0;">
+                        <li class="strategy-item" style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div class="strategy-number" style="width: 25px; height: 25px; background-color: #FF6B6B; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: 600; font-size: 14px; flex-shrink: 0;">1</div>
+                            <p class="strategy-text">Fase Beta em BH e RJ para testar funcionalidades e coletar feedback.</p>
+                        </li>
+                        <li class="strategy-item" style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div class="strategy-number" style="width: 25px; height: 25px; background-color: #FF6B6B; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: 600; font-size: 14px; flex-shrink: 0;">2</div>
+                            <p class="strategy-text">Parcerias com 10 coletivos culturais para promover uso e criação de eventos.</p>
+                        </li>
+                        <li class="strategy-item" style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div class="strategy-number" style="width: 25px; height: 25px; background-color: #FF6B6B; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: 600; font-size: 14px; flex-shrink: 0;">3</div>
+                            <p class="strategy-text">Influenciadores locais de nicho que ressoam com o público-alvo.</p>
+                        </li>
+                        <li class="strategy-item" style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div class="strategy-number" style="width: 25px; height: 25px; background-color: #FF6B6B; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: 600; font-size: 14px; flex-shrink: 0;">4</div>
+                            <p class="strategy-text">Funcionalidade viral "Tá Rolando Aqui" para compartilhamento espontâneo.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/LyBfE2BBnX4R.jpg" alt="Pessoas Curtindo Eventos" class="event-image">
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Projeção de Receita por Fonte</div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Pulse PRO -->
+    <div class="section-container">
+        <h1 class="section-title">Pulse PRO: A Solução para Negócios</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-star feature-icon"></i>
+                        Principais Benefícios
+                    </div>
+                    <div class="section-content">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="benefit-text">
+                                <strong>Perfil Verificado e Destaque:</strong> Selo "Oficial", prioridade no mapa e banner personalizado.
+                            </p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="benefit-text">
+                                <strong>Ferramentas de Venda Avançada:</strong> Venda direta sem taxa extra, sistema de reservas e check-in digital.
+                            </p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="benefit-text">
+                                <strong>Analytics Poderoso:</strong> Dados em tempo real sobre público, picos de movimentação e avaliações detalhadas.
+                            </p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="benefit-text">
+                                <strong>Gestão de Eventos Recorrentes:</strong> Agenda automática e promoções integradas.
+                            </p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="benefit-text">
+                                <strong>Suporte Prioritário:</strong> Atendimento via chat 24/7 e relatórios mensais personalizados.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-tags feature-icon"></i>
+                        Modelo de Assinatura
+                    </div>
+                    <div class="section-content">
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Plano</th>
+                                    <th>Preço (R$/mês)</th>
+                                    <th>Para quem?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Basic</td>
+                                    <td>99</td>
+                                    <td>Bares, pequenos eventos</td>
+                                </tr>
+                                <tr>
+                                    <td>Pro</td>
+                                    <td>299</td>
+                                    <td>Casas de show médias</td>
+                                </tr>
+                                <tr>
+                                    <td>Enterprise</td>
+                                    <td>Sob consulta</td>
+                                    <td>Grandes festivais, estádios</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/Jntnz2kdVTJf.png" alt="Dashboard Analytics" class="dashboard-image">
+                </div>
+                <div class="example-container">
+                    <div class="example-title">Exemplo Prático: "Casa da Música"</div>
+                    <div class="example-content" style="display: flex; flex-direction: column; height: calc(100% - 35px);">
+                        <div class="example-before-after" style="display: flex; flex: 1; gap: 20px;">
+                            <div class="example-box" style="flex: 1; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 15px; display: flex; flex-direction: column;">
+                                <div class="example-box-title" style="font-size: 16px; font-weight: 600; margin-bottom: 10px; text-align: center;">Antes do Pulse Pro</div>
+                                <div class="example-box-content" style="font-size: 15px; line-height: 1.4; flex: 1;">
+                                    Vendas via WhatsApp, processo manual, alcance limitado, sem dados sobre o público.
+                                </div>
+                                <div class="example-metric" style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                                    <div class="example-number" style="font-size: 24px; font-weight: 700; margin-right: 5px;">50</div>
+                                    <div class="example-label" style="font-size: 14px;">ingressos/show</div>
+                                </div>
+                            </div>
+                            <div class="example-box" style="flex: 1; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 15px; display: flex; flex-direction: column;">
+                                <div class="example-box-title" style="font-size: 16px; font-weight: 600; margin-bottom: 10px; text-align: center;">Com Pulse Pro</div>
+                                <div class="example-box-content" style="font-size: 15px; line-height: 1.4; flex: 1;">
+                                    Destaque no mapa, reservas integradas, dados valiosos sobre o público (70% mulheres 25-34 anos).
+                                </div>
+                                <div class="example-metric" style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                                    <div class="example-number" style="font-size: 24px; font-weight: 700; margin-right: 5px;">150</div>
+                                    <div class="example-label" style="font-size: 14px;">ingressos/show</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Aba 
+
+
+    <!-- Slide 7: Aba "Negócios & Educação" -->
+    <div class="section-container">
+        <h1 class="section-title">Aba "Negócios & Educação"</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-th-large feature-icon"></i>
+                        Categorias Principais
+                    </div>
+                    <div class="section-content">
+                        <div class="categories-grid">
+                            <div class="category-item">
+                                <div class="category-icon">
+                                    <i class="fas fa-microphone"></i>
+                                </div>
+                                <div class="category-text">Palestras & Workshops</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <div class="category-text">Feiras de Negócios</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="category-text">Cursos Livres</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="category-text">Networking</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-gem feature-icon"></i>
+                        Features Exclusivas
+                    </div>
+                    <div class="section-content">
+                        <div class="feature-item">
+                            <i class="fas fa-certificate" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="feature-text">
+                                <strong>Certificados Digitais:</strong> Emitidos via Pulse para participantes de cursos e palestras.
+                            </p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-comments" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="feature-text">
+                                <strong>Sala de Negócios Virtual:</strong> Chat por interesse para conexões específicas.
+                            </p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-palette" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="feature-text">
+                                <strong>Modo "Light" para Empresas:</strong> Design sóbrio para contextos formais.
+                            </p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fab fa-linkedin" style="color: #6BFFD4; margin-right: 10px; margin-top: 3px;"></i>
+                            <p class="feature-text">
+                                <strong>Integração com LinkedIn:</strong> Botão "Conectar" nos perfis de palestrantes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/A5fBRmzQsJ1m.jpg" alt="Interface de Eventos" class="events-image">
+                </div>
+                <div class="flow-container">
+                    <div class="flow-title">Exemplo de Uso: Curso de Marketing Digital</div>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-number">1</div>
+                            <div class="flow-text">Usuário encontra um curso de marketing digital no mapa</div>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-number">2</div>
+                            <div class="flow-text">Compra ingresso e ativa lembretes automáticos</div>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-number">3</div>
+                            <div class="flow-text">No dia, participa e ganha certificado no app</div>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-number">4</div>
+                            <div class="flow-text">Recebe sugestão de sub-evento de networking com outros alunos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Novas Ideias e Evolução Futura -->
+    <div class="section-container">
+        <h1 class="section-title">Novas Ideias e Evolução Futura</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-lightbulb feature-icon"></i>
+                        Funcionalidades Futuras
+                    </div>
+                    <div class="section-content">
+                        <div class="feature-item">
+                            <div class="feature-icon" style="width: 36px; height: 36px; background-color: rgba(255, 107, 107, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="feature-content" style="flex: 1;">
+                                <div class="feature-title" style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">Pulse Points</div>
+                                <div class="feature-description" style="font-size: 16px; line-height: 1.4;">
+                                    Sistema de recompensas por comparecimento a eventos, com pontos trocáveis por descontos, acessos VIP ou doações para causas sociais.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon" style="width: 36px; height: 36px; background-color: rgba(255, 107, 107, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-content" style="flex: 1;">
+                                <div class="feature-title" style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">Match Social</div>
+                                <div class="feature-description" style="font-size: 16px; line-height: 1.4;">
+                                    Algoritmo inteligente para sugerir conexões entre usuários com base em interesses comuns e proximidade geográfica.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon" style="width: 36px; height: 36px; background-color: rgba(255, 107, 107, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-content" style="flex: 1;">
+                                <div class="feature-title" style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">Relatórios Pessoais</div>
+                                <div class="feature-description" style="font-size: 16px; line-height: 1.4;">
+                                    Histórico de eventos e conexões feitas, incluindo um "mapa de memórias" com os locais visitados.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-road feature-icon"></i>
+                        Roadmap de Evolução
+                    </div>
+                    <div class="section-content">
+                        <div class="roadmap">
+                            <div class="roadmap-item">
+                                <div class="roadmap-year">2025</div>
+                                <div class="roadmap-text">
+                                    Integração com esportes e transmissões ao vivo de eventos locais
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                <div class="roadmap-year">2026</div>
+                                <div class="roadmap-text">
+                                    Pulse Pro* com analytics avançados para negócios e promotores
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                <div class="roadmap-year">2027</div>
+                                <div class="roadmap-text">
+                                    Realidade aumentada para enriquecer a experiência em eventos
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/FNzaJNykCfkd.jpg" alt="Elementos de Gamificação" class="gamification-image">
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-title">Evolução do Engajamento do Usuário</div>
+                    <canvas id="engagementChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Conclusão -->
+    <div class="section-container">
+        <h1 class="section-title">Conclusão: O Movimento Pulse</h1>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-heart feature-icon"></i>
+                        Mais que um App, uma Resposta
+                    </div>
+                    <p class="feature-description">
+                        Em um mundo onde a tecnologia muitas vezes nos afasta uns dos outros, o Pulse se posiciona como um farol de reconexão. Ele é a antítese do "scroll" sem fim, da comparação incessante e da busca por validação digital.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">
+                        <i class="fas fa-balance-scale feature-icon"></i>
+                        Nova Forma de Usar a Tecnologia
+                    </div>
+                    <p class="feature-description">
+                        O Pulse representa uma filosofia de uso da tecnologia que valoriza a experiência humana acima de tudo. Não queremos substituir a vida real por uma versão digitalizada; queremos enriquecê-la.
+                    </p>
+                    <div class="movement-list">
+                        <div class="movement-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px;"></i>
+                            <div class="movement-text">Para quem quer viver em vez de scrollar</div>
+                        </div>
+                        <div class="movement-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px;"></i>
+                            <div class="movement-text">Para negócios que valorizam clientes reais</div>
+                        </div>
+                        <div class="movement-item">
+                            <i class="fas fa-check-circle" style="color: #6BFFD4; margin-right: 10px;"></i>
+                            <div class="movement-text">Para cidades que pulsam de verdade</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <p class="highlight-text">
+                        "Onde a vida realmente acontece."
+                    </p>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-container">
+                    <img src="./images/0bdC6LIF3uhg.jpg" alt="Pessoas Curtindo Evento ao Vivo" class="conclusion-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gráfico de Tendência de Mercado
+        const marketCtx = document.getElementById('marketTrendChart').getContext('2d');
+        const marketTrendChart = new Chart(marketCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [
+                    {
+                        label: 'Interesse em Experiências Presenciais',
+                        data: [40, 45, 60, 75, 85, 90],
+                        borderColor: '#FF6B6B',
+                        backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Satisfação com Redes Sociais',
+                        data: [70, 65, 60, 50, 45, 40],
+                        borderColor: '#6BFFD4',
+                        backgroundColor: 'rgba(107, 255, 212, 0.2)',
+                        tension: 0.3,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#F0F0F0',
+                            font: {
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            color: '#F0F0F0'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#F0F0F0'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Comportamento do Usuário
+        const behaviorCtx = document.getElementById('userBehaviorChart').getContext('2d');
+        const userBehaviorChart = new Chart(behaviorCtx, {
+            type: 'bar',
+            data: {
+                labels: ['< 1 hora', '1-2 horas', '2-3 horas', '3-4 horas', '> 4 horas'],
+                datasets: [
+                    {
+                        label: 'Nível de Satisfação (0-100)',
+                        data: [75, 65, 55, 40, 30],
+                        backgroundColor: '#FF6B6B',
+                        borderColor: '#FF6B6B',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#F0F0F0',
+                            font: {
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Nível de Satisfação',
+                            color: '#F0F0F0',
+                            font: {
+                                family: 'Montserrat'
+                            }
+                        },
+                        ticks: {
+                            color: '#F0F0F0'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tempo Diário em Redes Sociais',
+                            color: '#F0F0F0',
+                            font: {
+                                family: 'Montserrat'
+                            }
+                        },
+                        ticks: {
+                            color: '#F0F0F0'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Receita
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Taxa sobre Ingressos/Vaquinhas', 'Pulse Pro', 'Doações Voluntárias'],
+                datasets: [
+                    {
+                        data: [55, 40, 5],
+                        backgroundColor: [
+                            '#FF6B6B',
+                            '#6BFFD4',
+                            '#FFFFFF'
+                        ],
+                        borderColor: '#1e3c5a',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#F0F0F0',
+                            font: {
+                                family: 'Montserrat'
+                            },
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Engajamento
+        const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+        const engagementChart = new Chart(engagementCtx, {
+            type: 'line',
+            data: {
+                labels: ['Lançamento', '+ Pulse Points', '+ Match Social', '+ Relatórios', '+ RA'],
+                datasets: [
+                    {
+                        label: 'Tempo no App (min/dia)',
+                        data: [15, 22, 28, 32, 40],
+                        borderColor: '#FF6B6B',
+                        backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Eventos por Usuário (mensal)',
+                        data: [2, 3, 4, 5, 7],
+                        borderColor: '#6BFFD4',
+                        backgroundColor: 'rgba(107, 255, 212, 0.2)',
+                        tension: 0.3,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#F0F0F0',
+                            font: {
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#F0F0F0'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#F0F0F0'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
 
